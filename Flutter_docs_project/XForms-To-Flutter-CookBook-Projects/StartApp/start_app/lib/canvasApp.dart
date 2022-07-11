@@ -41,7 +41,7 @@ class SignaturePainter extends CustomPainter {
     final Paint paint = Paint()
       ..color = Colors.blue
       ..strokeCap = StrokeCap.round
-      ..strokeWidth = 115.0;
+      ..strokeWidth = 15.0;
 
     for (var i = 0; i < points.length - 1; i++) {
       if (points[i] != null && points[i + 1] != null) {

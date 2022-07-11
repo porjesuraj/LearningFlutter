@@ -30,7 +30,11 @@ class _FadAppState extends State<FadeApp> with TickerProviderStateMixin {
       )),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          controller.forward();
+          if (controller.isCompleted) {
+            controller.reverse();
+          } else {
+            controller.forward();
+          }
         },
         tooltip: 'Fade',
         child: const Icon(Icons.brush),

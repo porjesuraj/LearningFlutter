@@ -49,7 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
-        child: Column(
+        child: Stack(
           // Column is also a layout widget. It takes a list of children and
           // arranges them vertically. By default, it sizes itself to fit its
           // children horizontally, and tries to be as tall as its parent.
@@ -64,10 +64,17 @@ class _MyHomePageState extends State<MyHomePage> {
           // center the children vertically; the main axis here is the vertical
           // axis because Columns are vertical (the cross axis would be
           // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            const Positioned.fill(
+              //
+              child: Image(
+                image: AssetImage('images/tiger.JPG'),
+                fit: BoxFit.fill,
+              ),
+            ),
             const Text(
               'You have pushed the button this many times:',
+              style: TextStyle(color: Colors.white),
             ),
             Text(
               '$_counter',

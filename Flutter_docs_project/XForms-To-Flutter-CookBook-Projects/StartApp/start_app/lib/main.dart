@@ -1,15 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:start_app/AppLifeCycleApp.dart';
+import 'package:start_app/AsyncDemoApp.dart';
+import 'package:start_app/BindingApp.dart';
+import 'package:start_app/GerstureApp.dart';
+import 'package:start_app/GridviewApp.dart';
+import 'package:start_app/isolateApp.dart';
+import 'package:start_app/navigateOutOfApp.dart';
 import 'fade.dart';
 import 'homepage.dart';
 import 'sampleApp.dart';
 import 'sampleApp2.dart';
 import 'canvasApp.dart';
+import 'home.dart';
+import 'AsyncDemoApp.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {
-  //runApp(const MyApp());
-  runApp(const MaterialApp(
-    home: DemoApp(),
-  ));
+  runApp(const MyApp());
+  // runApp(const MaterialApp(
+  //  home: DemoApp(),
+  // ));
 }
 
 class MyApp extends StatelessWidget {
@@ -33,10 +44,38 @@ class MyApp extends StatelessWidget {
           // is not restarted.
           primarySwatch: Colors.green,
           backgroundColor: Colors.black),
-      home: const SampleApp2(),
+      //home: const SampleApp2(),
       //home: const SampleApp(),
-      //home: const MyHomePage('demo'),
+      home: const HomePage(title: 'Demos'),
       //home: const FadeApp(title: 'fade app'),
+      routes: <String, WidgetBuilder>{
+        '/sample1': (BuildContext context) => const SampleApp(),
+        '/sample2': (BuildContext context) => const SampleApp2(),
+        '/fade': (BuildContext context) =>
+            const FadeApp(title: 'fade demo app'),
+        '/myHome': (BuildContext context) => const MyHomePage(title: 'home'),
+        '/sign': (BuildContext context) => const DemoApp(),
+        '/navToUrl': (BuildContext context) =>
+            const NavigationUrlApp(title: "Url App"),
+        '/asyncApp': (BuildContext context) =>
+            const AsyncApp(title: 'Async Demo'),
+        '/isolateApp': (BuildContext context) => const IsolatedAppPage(),
+        '/appLife': (BuildContext context) => const AppLifecycleReactor(),
+        '/gridView': (BuildContext context) => const GridViewApp(),
+        '/gestureApp': (BuildContext context) => const GestureApp(),
+        '/formApp': (BuildContext context) => const FormApp(),
+      },
+      // localizationsDelegates: [
+      //   AppLocalizations.delegate,
+      //   GlobalMaterialLocalizations.delegate,
+      //   GlobalWidgetsLocalizations.delegate,
+      // ],
+      // supportedLocales: const <Locale>[
+      //   Locale('en', 'US'),
+      //   Locale('es', ''),
+      // ],
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
     );
   }
 
@@ -46,7 +85,6 @@ class MyApp extends StatelessWidget {
 
 class DemoApp extends StatelessWidget {
   const DemoApp({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) => Scaffold(body: const Signature());
 }
